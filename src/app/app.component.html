@@ -1,4 +1,4 @@
-<!--The content below is only a placeholder and can be replaced.-->
+<!-- The content below is only a placeholder and can be replaced.
 <div style="text-align:center">
   <h1>
     Welcome to {{ title }}!
@@ -18,4 +18,57 @@
   </li>
 </ul>
 
-<router-outlet></router-outlet>
+<router-outlet></router-outlet> -->
+<div>
+  <button type="button" (click)="displayType('name')">Search/Filter by Name</button>
+  <button type="button" (click)="displayType('ingredients')">Search/Filter by Ingredients</button>
+  <button type="button" (click)="displayType('categories')">Search/Filter by Categories</button>
+</div>
+<div *ngIf="filterType == 'name'">
+  <label for="">Search/Filter by Name for cocktails:</label>
+  <input type="text" (keyup)="onKeyUp($event)">
+  <button type="button" (click)="sortName()">Sort By Id</button>
+  <ul *ngIf="cocktailList.length">
+    <li *ngFor="let list of cocktailList" style="list-style: none;">
+      <span>
+        {{list.strDrink}}
+      </span>
+    </li>
+  </ul>
+</div>
+
+<!-- <div>
+  <label for="">Random Cocktail List:</label>
+  <ul *ngIf="randomCocktailList.length">
+    <li *ngFor="let list of randomCocktailList" style="list-style: none;">
+    <span>
+      {{list.strDrink}}
+    </span></li>
+  </ul>
+</div> -->
+
+<div *ngIf="filterType == 'ingredients'">
+  <label for="">Search/Filter by Ingredients:</label>
+  <input type="text" (keyup)="onKeyUp2($event)">
+<button type="button" (click)="sortIngredients()">Sort By Id</button>
+  <ul *ngIf="ingredientList.length">
+    <li *ngFor="let list of ingredientList" style="list-style: none;">
+      <span>
+        {{list.strDrink}}
+      </span>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="filterType == 'categories'">
+  <label for="">Search/Filter by Categories:</label>
+  <input type="text" (keyup)="onKeyUp3($event)">
+<button type="button" (click)="sortCategories()">Sort By Id</button>
+  <ul *ngIf="categoryList.length">
+    <li *ngFor="let list of categoryList" style="list-style: none;">
+      <span>
+        {{list.strDrink}}
+      </span>
+    </li>
+  </ul>
+</div>
